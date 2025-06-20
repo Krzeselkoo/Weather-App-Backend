@@ -62,10 +62,13 @@ public class WeatherDetails {
     }
 
     public void calculateEnergy() {
-        double sunExposureInHours = sunExposureInSeconds/60;
+        double sunExposureInHours = sunExposureInSeconds/3600;
         double panelsEfficiency = 0.2f;
+
+        //unit: kW
         double installationPower = 2.5f;
 
+        //unit: kWh =  kW * efficiency * h
         this.estimatedEnergy = installationPower * panelsEfficiency * sunExposureInHours;
     }
 
