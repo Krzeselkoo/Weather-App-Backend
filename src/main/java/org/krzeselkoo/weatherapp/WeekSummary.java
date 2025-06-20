@@ -2,6 +2,7 @@ package org.krzeselkoo.weatherapp;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.krzeselkoo.weatherapp.deserializers.WeekSummaryDeserializer;
 
 @JsonDeserialize(using = WeekSummaryDeserializer.class)
 public class WeekSummary {

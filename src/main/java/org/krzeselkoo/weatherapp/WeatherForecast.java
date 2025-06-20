@@ -1,6 +1,7 @@
 package org.krzeselkoo.weatherapp;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.krzeselkoo.weatherapp.deserializers.WeatherForecastDeserializer;
 
 import java.util.List;
 
