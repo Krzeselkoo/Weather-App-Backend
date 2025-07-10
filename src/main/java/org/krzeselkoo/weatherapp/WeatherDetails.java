@@ -1,30 +1,33 @@
 package org.krzeselkoo.weatherapp;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
+
 
 public class WeatherDetails {
+    @Getter
+    @Setter
     private String time;
+
+    @Setter
     private String weatherCode;
+
+    @Setter
     private double minTemp;
+
+    @Setter
     private double maxTemp;
+
+    @Getter
+    @Setter
     private double estimatedEnergy;
+
     private double sunExposureInSeconds;
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 
     @JsonProperty("weather_code")
     public String getWeatherCode() {
         return weatherCode;
-    }
-
-    public void setWeatherCode(String weatherCode) {
-        this.weatherCode = weatherCode;
     }
 
     @JsonProperty("temperature_2m_min")
@@ -32,17 +35,9 @@ public class WeatherDetails {
         return minTemp;
     }
 
-    public void setMinTemp(double minTemp) {
-        this.minTemp = minTemp;
-    }
-
     @JsonProperty("temperature_2m_max")
     public double getMaxTemp() {
         return maxTemp;
-    }
-
-    public void setMaxTemp(double maxTemp) {
-        this.maxTemp = maxTemp;
     }
 
     @JsonProperty("sunshine_duration")
@@ -51,14 +46,6 @@ public class WeatherDetails {
     }
     public void setSunExposure(double sunExposureInSeconds){
         this.sunExposureInSeconds = sunExposureInSeconds;
-    }
-
-    public double getEstimatedEnergy() {
-        return estimatedEnergy;
-    }
-
-    public void setEstimatedEnergy(double estimatedEnergy) {
-        this.estimatedEnergy = estimatedEnergy;
     }
 
     public void calculateEnergy() {
