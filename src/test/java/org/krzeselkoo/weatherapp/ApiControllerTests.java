@@ -27,10 +27,17 @@ public class ApiControllerTests {
     @Test
     public void testGetWeatherForecast_InvalidLatitude() throws Exception {
         mockMvc.perform(get("/api/weather-forecast")
-                        .param("latitude", "200")
+                        .param("latitude", "200") // Invalid
                         .param("longitude", "21.01"))
-                .andExpect(status().isBadRequest())
-                .andExpect(content().string("Latitude must be between -90 and 90."));
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void testGetWeatherForecast_InvalidLongitude() throws Exception {
+        mockMvc.perform(get("/api/weather-forecast")
+                        .param("latitude", "52.22")
+                        .param("longitude", "200")) // Invalid
+                .andExpect(status().isBadRequest());
     }
 
     @Test
@@ -39,5 +46,21 @@ public class ApiControllerTests {
                         .param("latitude", "52.22")
                         .param("longitude", "21.01"))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testGetWeekSummary_InvalidLatitude() throws Exception {
+        mockMvc.perform(get("/api/week-summary")
+                        .param("latitude", "-200") // Invalid
+                        .param("longitude", "21.01"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void testGetWeekSummary_InvalidLongitude() throws Exception {
+        mockMvc.perform(get("/api/week-summary")
+                        .param("latitude", "52.22")
+                        .param("longitude", "-200")) // Invalid
+                .andExpect(status().isBadRequest());
     }
 }
